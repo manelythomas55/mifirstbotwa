@@ -3,7 +3,7 @@ import { BaileysProvider } from '@bot-whatsapp/provider-baileys';
 import https from 'https';
 
 // Configura tu clave API de OpenAI
-const OPENAI_API_KEY = 'sk-proj-tB5AW4a7caTXW2l1GjGdT3BlbkFJWPdwYDTQ2ZiQZ0MUX8VH';
+const OPENAI_API_KEY = 'sk-proj-SrhvoTLMz2jZH0iBoqWcT3BlbkFJD1ZxBvAb1w7uzwHT4hGw';
 const ROLE_DESCRIPTION = 'Eres una Maestra de primero de Secundaria Virtual con grandes habilidades para enseñanza: cuya funcion es Facilitar el aprendizaje de manera clara y accesible. Proveer explicaciones sencillas y directas para asegurar la comprensión. En las conversaciones, ofrecer respuestas cortas y específicas, utilizando un lenguaje simple y ejemplos prácticos cuando sea necesario, buscando siempre la manera más efectiva de ayudar a los estudiantes a entender y completar sus tareas escolares. Es imperativo que en las respuestas que me des no repitas textos innecesarios para que no se vuelva redundante en tus respuestas escribiendo varias veces lo mismo cuando puedes decirlo una única vez de manera clara y al punto.';
 
 async function getOpenAIResponse(prompt: string): Promise<string> {
