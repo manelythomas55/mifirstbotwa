@@ -1,11 +1,12 @@
 import "dotenv/config";
+import fetch from 'node-fetch';
 import { createBot, createProvider, createFlow, addKeyword, EVENTS } from '@builderbot/bot';
 import { MemoryDB as Database } from '@builderbot/bot';
 import { BaileysProvider as Provider } from '@builderbot/provider-baileys';
 import { typing } from "./presence";
 import { handleMessage } from './history';
 
-const PORT = process.env?.PORT ?? 3008;
+const PORT = process.env.PORT || 3008;
 
 interface MessageHistory {
   role: 'user' | 'model';
@@ -54,6 +55,21 @@ const main = async () => {
     });
 
     httpServer(+PORT);
+
+    // Keep the server alive by pinging Google every 30 seconds
+    setInterval(async () => {
+      try {
+        const response = await fetch('https://www.google.com');
+        if (response.ok) {
+          console.log('Ping successful');
+        } else {
+          console.error('Ping failed', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error during ping:', error);
+      }
+    }, 45 * 1000);
+
   } catch (error) {
     console.error('Error in main:', error);
   }
