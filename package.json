@@ -2,9 +2,9 @@
   "name": "whatsapp-chatbot",
   "version": "1.0.0",
   "description": "",
-  "main": "chatbot.js",
+  "main": "chatbot.ts",
   "scripts": {
-    "start": "node src/chatbot.js",
+    "start": "node src/chatbot.ts",
     "build": "tsc"
   },
   "keywords": [],
@@ -20,7 +20,7 @@
     "sharp": "^0.33.4"
   },
   "devDependencies": {
-    "typescript": "^4.9.4",
+    "typescript": "^5.4.5",
     "ts-node": "^10.9.1"
   }
 }
