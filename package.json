@@ -2,9 +2,9 @@
   "name": "whatsapp-chatbot",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/chatbot.js",
+  "main": "chatbot.js",
   "scripts": {
-    "start": "node dist/chatbot.js",
+    "start": "node src/chatbot.js",
     "build": "tsc"
   },
   "keywords": [],
