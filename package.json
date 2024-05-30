@@ -2,7 +2,7 @@
   "name": "whatsapp-chatbot",
   "version": "1.0.0",
   "description": "",
-  "main": "src/chatbot.ts",
+  "main": "chatbot.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
