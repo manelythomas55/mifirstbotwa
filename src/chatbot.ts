@@ -1,5 +1,5 @@
 import "dotenv/config";
-import fetch from 'node-fetch';
+import http from 'http';
 import { createBot, createProvider, createFlow, addKeyword, EVENTS } from '@builderbot/bot';
 import { MemoryDB as Database } from '@builderbot/bot';
 import { BaileysProvider as Provider } from '@builderbot/provider-baileys';
@@ -56,20 +56,31 @@ const main = async () => {
 
     httpServer(+PORT);
 
-    // Keep the server alive by pinging Google every 30 seconds
-    setInterval(async () => {
-      try {
-        const response = await fetch('https://www.google.com');
-        if (response.ok) {
+    // Keep the server alive by pinging Google every 30 seconds using http
+    setInterval(() => {
+      const options = {
+        hostname: 'www.google.com',
+        port: 80,
+        path: '/',
+        method: 'GET'
+      };
+
+      const req = http.request(options, (res) => {
+        if (res.statusCode === 200) {
           console.log('Ping successful');
         } else {
-          console.error('Ping failed', response.statusText);
+          console.error('Ping failed', res.statusCode);
         }
-      } catch (error) {
-        console.error('Error during ping:', error);
-      }
-    }, 45 * 1000);
+      });
 
+      req.on('error', (e) => {
+        console.error('Error during ping:', e);
+      });
+
+      req.end();
+    }, 48 * 1000); // 48 seconds
+
+    console.log(`Server is listening on port ${PORT}`);
   } catch (error) {
     console.error('Error in main:', error);
   }
