@@ -10,20 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.21.1",
     "@builderbot/bot": "^1.1.6",
     "@builderbot/provider-baileys": "^1.1.6",
     "@google/generative-ai": "^0.11.4",
-    "@hapi/boom": "^10.0.1",
     "@whiskeysockets/baileys": "^6.7.2",
     "axios": "^1.7.2",
-    "claude-api": "^1.0.4",
     "dotenv": "^16.4.5",
-    "openai": "^4.47.1",
-    "qrcode-terminal": "^0.12.0",
     "sharp": "^0.33.4"
   },
   "devDependencies": {
-    "@types/qrcode-terminal": "^0.12.2"
+
   }
 }
