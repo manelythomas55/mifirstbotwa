@@ -17,7 +17,8 @@
     "@whiskeysockets/baileys": "^6.7.2",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.4",
+    "node-fetch": "^3.3.0"  // Añade esta línea
   },
   "devDependencies": {
     "typescript": "^4.9.4",
