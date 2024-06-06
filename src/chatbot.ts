@@ -13,24 +13,24 @@ interface MessageHistory {
   parts: { text: string }[];
 }
 
-const history: MessageHistory[] = [
-  {
-    role: "user",
-    parts: [{ text: "Inicio de conversación" }],
-  },
-  {
-    role: "model",
-    parts: [{ text: "¡Hola! ¿En qué puedo ayudarte hoy?" }],
-  },
-];
+const userHistories = new Map<string, MessageHistory[]>();
 
 const welcomeFlow = addKeyword<Provider, Database>(EVENTS.WELCOME)
   .addAction(async (ctx, { flowDynamic, state, provider }) => {
     try {
       await typing(ctx, provider);
 
+      // Obtener el historial del usuario, o crear uno nuevo si no existe
+      let history = userHistories.get(ctx.from) || [
+        { role: "user", parts: [{ text: "Inicio de conversación" }] },
+        { role: "model", parts: [{ text: "¡Hola! ¿En qué puedo ayudarte hoy?" }] },
+      ];
+
       // Handle the message and update the history
       const response = await handleMessage(ctx.from, ctx.body, history);
+
+      // Guardar el historial actualizado en el mapa
+      userHistories.set(ctx.from, history);
 
       // Send the entire response without splitting
       await flowDynamic([{ body: response }]);
